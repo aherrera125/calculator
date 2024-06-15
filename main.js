@@ -1,113 +1,98 @@
-var number = "";
-var number1;
-var number2;
-var flag;
+var currentNum = "";
+var firstNum;
+var SecondNum;
+var typeOp;
 var result;
 
-function numberOne() {
+function currentNumber(number) {
     document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "1";
+    document.getElementById("display").value = currentNum + number;
+    currentNum = document.getElementById("display").value;
 }
 
-function numberTwo() {
+function assignFirstNumber() {
+    firstNum = document.getElementById("display").value;
     document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "2";
 }
 
-function numberThree() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "3";
+function assignSecondNumber(typeOp) {
+    SecondNum = document.getElementById("display").value;
+    switch (typeOp) {
+        case "add":
+            result = parseInt(firstNum) + parseInt(SecondNum);
+            break;
+        case "less":
+            result = parseInt(firstNum) - parseInt(SecondNum);
+            break;
+        case "mult":
+            result = parseInt(firstNum) * parseInt(SecondNum);
+            break;
+        case "div":
+            result = parseInt(firstNum) / parseInt(SecondNum);
+            break;
+    }
+    document.getElementById("display").value = result.toString();
+    firstNum = result.toString();    
 }
 
-function numberFour() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "4";
-}
-
-function numberFive() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "5";
-}
-
-function numberSix() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "6";
-}
-
-function numberSeven() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "7";
-}
-
-function numberEigth() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "8";
-}
-
-function numberNine() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "9";
-}
-
-function numberZero() {
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = number + "0";
-}
-
-function add() {    
-    flag = "add";
-    if (!number1) {
-        number1 = document.getElementById("display").value;
-        document.getElementById("display").value = "";
-    } else {
-        number2 = document.getElementById("display").value;
-        result = parseInt(number1) + parseInt(number2);        
-        document.getElementById("display").value = result.toString();
-        number1 = result.toString();
+function typeOperation(operation) {
+    typeOp = operation;
+    switch (typeOp) {
+        case "add":
+            if (!firstNum) {
+                assignFirstNumber();
+            } else {
+                assignSecondNumber(typeOp);
+            }
+            currentNum = "";
+            break;
+        case "less":
+            if (!firstNum) {
+                assignFirstNumber();
+            } else {
+                assignSecondNumber(typeOp);
+            }
+            currentNum = "";
+            break;
+        case "mult":
+            if (!firstNum) {
+                assignFirstNumber();
+            } else {
+                assignSecondNumber(typeOp);
+            }
+            currentNum = "";
+            break;
+        case "div":
+            if (!firstNum) {
+                assignFirstNumber();
+            } else {
+                assignSecondNumber(typeOp);
+            }
+            currentNum = "";
+            break;
     }
 }
 
-function less() {
-    flag = "less";
-    number1 = document.getElementById("display").value;
-    document.getElementById("display").value = "";
-}
-
-function mult() {
-    flag = "mult";
-    number1 = document.getElementById("display").value;
-    document.getElementById("display").value = "";
-}
-
-function div() {
-    flag = "div";
-    number1 = document.getElementById("display").value;
-    document.getElementById("display").value = "";
-}
-
-function clearDisplay() {
-    document.getElementById("display").value = "";
-}
-
-function showResult() {    
-    number2 = document.getElementById("display").value;
-    switch (flag) {
+function showResult() {
+    SecondNum = document.getElementById("display").value;
+    switch (typeOp) {
         case "add":
-            result = parseInt(number1) + parseInt(number2);
+            result = parseInt(firstNum) + parseInt(SecondNum);
             document.getElementById("display").value = result.toString();
-            number1 = "";
+            firstNum = "";
             break;
         case "less":
-            result = parseInt(number1) - parseInt(number2);
+            result = parseInt(firstNum) - parseInt(SecondNum);
             document.getElementById("display").value = result.toString();
+            firstNum = "";
             break;
         case "mult":
-            result = parseInt(number1) * parseInt(number2);
+            result = parseInt(firstNum) * parseInt(SecondNum);
             document.getElementById("display").value = result.toString();
             break;
         case "div":
-            if (parseInt(number1) >= parseInt(number2)) {
-                result = parseInt(number1) / parseInt(number2);
+            if (parseInt(firstNum) >= parseInt(SecondNum)) {
+                result = parseInt(firstNum) / parseInt(SecondNum);
                 document.getElementById("display").value = result.toString();
             } else {
                 alert("First number should be more than second number");
