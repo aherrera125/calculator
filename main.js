@@ -4,7 +4,7 @@ var SecondNum;
 var typeOp;
 var result;
 
-function currentNumber(number) {
+function displayNumber(number) {
     document.getElementById("display").value = "";
     document.getElementById("display").value = currentNum + number;
     currentNum = document.getElementById("display").value;
@@ -19,23 +19,31 @@ function assignSecondNumber(typeOp) {
     SecondNum = document.getElementById("display").value;
     switch (typeOp) {
         case "add":
-            result = parseInt(firstNum) + parseInt(SecondNum);
+            result = parseFloat(firstNum) + parseFloat(SecondNum);
+            firstNum = result.toString();
             break;
         case "less":
-            result = parseInt(firstNum) - parseInt(SecondNum);
+            result = parseFloat(firstNum) - parseFloat(SecondNum);
+            firstNum = result.toString();
             break;
         case "mult":
-            result = parseInt(firstNum) * parseInt(SecondNum);
+            result = parseFloat(firstNum) * parseFloat(SecondNum);
+            firstNum = result.toString();
             break;
         case "div":
-            result = parseInt(firstNum) / parseInt(SecondNum);
+            result = parseFloat(firstNum) / parseFloat(SecondNum);
+            firstNum = result.toString();
+            break;
+        case "percentage":
+            result = parseFloat(firstNum) * parseFloat(SecondNum) / 100;
+            firstNum = "";
             break;
     }
     document.getElementById("display").value = result.toString();
-    firstNum = result.toString();    
 }
 
 function typeOperation(operation) {
+    let number;
     typeOp = operation;
     switch (typeOp) {
         case "add":
@@ -70,6 +78,22 @@ function typeOperation(operation) {
             }
             currentNum = "";
             break;
+        case "percentage":
+            if (!firstNum) {
+                assignFirstNumber();
+            } else {
+                assignSecondNumber(typeOp);
+            }
+            currentNum = "";
+            break;
+        case "changeSign":
+            number = document.getElementById("display").value;
+            if (parseFloat(number) > 0) {
+                document.getElementById("display").value = "-" + number.toString();
+            } else {
+                document.getElementById("display").value = number.toString().replace('-', '');
+            }
+            break;
     }
 }
 
@@ -77,26 +101,36 @@ function showResult() {
     SecondNum = document.getElementById("display").value;
     switch (typeOp) {
         case "add":
-            result = parseInt(firstNum) + parseInt(SecondNum);
+            result = parseFloat(firstNum) + parseFloat(SecondNum);
             document.getElementById("display").value = result.toString();
             firstNum = "";
             break;
         case "less":
-            result = parseInt(firstNum) - parseInt(SecondNum);
+            result = parseFloat(firstNum) - parseFloat(SecondNum);
             document.getElementById("display").value = result.toString();
             firstNum = "";
             break;
         case "mult":
-            result = parseInt(firstNum) * parseInt(SecondNum);
+            result = parseFloat(firstNum) * parseFloat(SecondNum);
             document.getElementById("display").value = result.toString();
+            firstNum = "";
             break;
         case "div":
-            if (parseInt(firstNum) >= parseInt(SecondNum)) {
-                result = parseInt(firstNum) / parseInt(SecondNum);
+            if (parseFloat(SecondNum) != 0) {
+                result = parseFloat(firstNum) / parseFloat(SecondNum);
                 document.getElementById("display").value = result.toString();
+                firstNum = "";
             } else {
-                alert("First number should be more than second number");
+                alert("Connot divide by zero!");
+                clearDisplay();
             }
             break;
     }
+}
+
+function clearDisplay() {
+    document.getElementById("display").value = "";
+    currentNum = "";
+    firstNum = "";
+    SecondNum = "";
 }

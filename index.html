@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="main.js"></script>
-    <title>Document</title>
+    <title>Calculator</title>
 </head>
 
 <body>
@@ -17,37 +17,36 @@
 
             </div>
             <div>
-                <button id="" onclick="">%</button>
+                <button id="" onclick="typeOperation('percentage')">%</button>
                 <button id="" onclick="clearDisplay()">CE</button>
-                <button id="" onclick="clearDisplay()">C</button>                
+                <button id="" onclick="clearDisplay()">C</button>
                 <button id="" onclick="typeOperation('div')">/</button>
             </div>
             <div>
-                <button id="" onclick="currentNumber('7')">7</button>
-                <button id="" onclick="currentNumber('8')">8</button>
-                <button id="" onclick="currentNumber('9')">9</button>                
+                <button id="" onclick="displayNumber('7')">7</button>
+                <button id="" onclick="displayNumber('8')">8</button>
+                <button id="" onclick="displayNumber('9')">9</button>
                 <button id="" onclick="typeOperation('mult')">*</button>
             </div>
             <div>
-                <button id="" onclick="currentNumber('4')">4</button>
-                <button id="" onclick="currentNumber('5')">5</button>
-                <button id="" onclick="currentNumber('6')">6</button>                
+                <button id="" onclick="displayNumber('4')">4</button>
+                <button id="" onclick="displayNumber('5')">5</button>
+                <button id="" onclick="displayNumber('6')">6</button>
                 <button id="" onclick="typeOperation('less')">-</button>
             </div>
             <div>
-                <button id="" onclick="currentNumber('1')">1</button>
-                <button id="" onclick="currentNumber('2')">2</button>
-                <button id="" onclick="currentNumber('3')">3</button>                
+                <button id="" onclick="displayNumber('1')">1</button>
+                <button id="" onclick="displayNumber('2')">2</button>
+                <button id="" onclick="displayNumber('3')">3</button>
                 <button id="" onclick="typeOperation('add')">+</button>
             </div>
             <div>
-                <button id="" onclick="">+/-</button>
-                <button id="" onclick="currentNumber('0')">0</button>
-                <button id="" onclick="">.</button>
+                <button id="" onclick="typeOperation('changeSign')">+/-</button>
+                <button id="" onclick="displayNumber('0')">0</button>
+                <button id="" onclick="displayNumber('.')">.</button>
                 <button id="" onclick="showResult()">=</button>
             </div>
         </div>
     </div>
 </body>
-
 </html>
