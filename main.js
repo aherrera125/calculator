@@ -1,28 +1,29 @@
+const nroOne = document.getElementById("nroOne");
+const nroTwo = document.getElementById("nroTwo");
+const nroThree = document.getElementById("nroThree");
+const nroFour = document.getElementById("nroFour");
+const nroFive = document.getElementById("nroFive");
+const nroSix = document.getElementById("nroSix");
+const nroSeven = document.getElementById("nroSeven");
+const nroEigth = document.getElementById("nroEigth");
+const nroNine = document.getElementById("nroNine");
+const nroZero = document.getElementById("nroZero");
+const add = document.getElementById("add");
+const less = document.getElementById("less");
+const mult = document.getElementById("mult");
+const div = document.getElementById("div");
+const changeSign = document.getElementById("changeSign");
+const displayResult = document.getElementById("result");
+const percentage = document.getElementById("percentage");
+const clearC = document.getElementById("clearC");
+const clearCE = document.getElementById("clearCE");
+
+var display = document.getElementById("display");
 var currentNum = "";
 var firstNum;
 var SecondNum;
 var typeOp;
 var result;
-
-const nroOne = document.getElementById('nroOne');
-const nroTwo = document.getElementById('nroTwo');
-const nroThree = document.getElementById('nroThree');
-const nroFour = document.getElementById('nroFour');
-const nroFive = document.getElementById('nroFive');
-const nroSix = document.getElementById('nroSix');
-const nroSeven = document.getElementById('nroSeven');
-const nroEigth = document.getElementById('nroEigth');
-const nroNine = document.getElementById('nroNine');
-const nroZero = document.getElementById('nroZero');
-const add = document.getElementById('add');
-const less = document.getElementById("less");
-const mult = document.getElementById("mult");
-const div = document.getElementById("div");
-const changeSign = document.getElementById("changeSign");
-const displayResult = document.getElementById('result');
-const percentage = document.getElementById("percentage");
-const clearC = document.getElementById("clearC");
-const clearCE = document.getElementById("clearCE");
 
 nroOne.addEventListener("click", ()=>{
     displayNumber('1');
@@ -82,19 +83,19 @@ clearCE.addEventListener("click",()=>{
     clearDisplay();
 })
 
-function displayNumber(number) {    
-    document.getElementById("display").value = "";
-    document.getElementById("display").value = currentNum + number;
-    currentNum = document.getElementById("display").value;
+function displayNumber(number) {
+    display.value = "";
+    display.value = currentNum + number;
+    currentNum = display.value;
 }
 
 function assignFirstNumber() {
-    firstNum = document.getElementById("display").value;
-    document.getElementById("display").value = "";
+    firstNum = display.value;
+    display.value = "";
 }
 
 function assignSecondNumber(typeOp) {
-    SecondNum = document.getElementById("display").value;
+    SecondNum = display.value;
     switch (typeOp) {
         case "add":
             result = parseFloat(firstNum) + parseFloat(SecondNum);
@@ -117,7 +118,7 @@ function assignSecondNumber(typeOp) {
             firstNum = "";
             break;
     }
-    document.getElementById("display").value = result.toString();
+    display.value = result.toString();
 }
 
 function typeOperation(operation) {
@@ -165,38 +166,38 @@ function typeOperation(operation) {
             currentNum = "";
             break;
         case "changeSign":
-            number = document.getElementById("display").value;
+            number = display.value;
             if (parseFloat(number) > 0) {
-                document.getElementById("display").value = "-" + number.toString();
+                display.value = "-" + number.toString();
             } else {
-                document.getElementById("display").value = number.toString().replace('-', '');
+                display.value = number.toString().replace('-', '');
             }
             break;
     }
 }
 
 function showResult() {
-    SecondNum = document.getElementById("display").value;
+    SecondNum = display.value;
     switch (typeOp) {
         case "add":
             result = parseFloat(firstNum) + parseFloat(SecondNum);
-            document.getElementById("display").value = result.toString();
+            display.value = result.toString();
             firstNum = "";
             break;
         case "less":
             result = parseFloat(firstNum) - parseFloat(SecondNum);
-            document.getElementById("display").value = result.toString();
+            display.value = result.toString();
             firstNum = "";
             break;
         case "mult":
             result = parseFloat(firstNum) * parseFloat(SecondNum);
-            document.getElementById("display").value = result.toString();
+            display.value = result.toString();
             firstNum = "";
             break;
         case "div":
             if (parseFloat(SecondNum) != 0) {
                 result = parseFloat(firstNum) / parseFloat(SecondNum);
-                document.getElementById("display").value = result.toString();
+                display.value = result.toString();
                 firstNum = "";
             } else {
                 alert("Connot divide by zero!");
@@ -207,7 +208,7 @@ function showResult() {
 }
 
 function clearDisplay() {
-    document.getElementById("display").value = "";
+    display.value = "";
     currentNum = "";
     firstNum = "";
     SecondNum = "";

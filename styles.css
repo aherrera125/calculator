@@ -1,8 +1,8 @@
 .border{
     border-style: solid;   
     text-align: center;
-    margin-left: 42%;
-    margin-right: 42%;
+    margin-left: 42.8%;
+    margin-right: 42.7%;
 }
 button{
     width: 50px;
@@ -11,4 +11,5 @@ button{
 textarea{    
     resize: none;
     width: 210px;
+    text-align: right
 }
